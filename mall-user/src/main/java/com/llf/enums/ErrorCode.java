@@ -5,7 +5,8 @@ public enum ErrorCode {
 	USER_OR_PWD_ERROR("100002", "用户名或者密码错误"),
 	USER_SESS_OUT("100003", "会话超时，请重新登录"),
 	USER_EXCH_DEV("100004", "当前用户已经在其它设备登录"),
-	USER_NO_LOGIN("100005", "用户未登录");
+	USER_NO_LOGIN("100005", "用户未登录"),
+	SYS_BUSY("100006", "系统繁忙");
 	
 	private String code;
 	private String msg;
