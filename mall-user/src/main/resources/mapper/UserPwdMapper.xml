@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.llf.mapper.UserPwdMapper">
+    
+    <insert id="add" useGeneratedKeys="true" keyProperty="userId">
+        insert into user_pwd
+        (
+        	userId,
+	        userName,
+	        userPassword
+		)
+        values
+        (
+        	#{userId},
+	        #{userName},
+	        #{userPassword}
+        )
+    </insert>
+    
+    <delete id="delByUserId">
+        delete from user_pwd 
+        where userId = #{userId}
+    </delete>
+    
+    <update id="upd">
+        update user_pwd 
+        set
+        	userPassword=#{userPassword}
+        where 
+       		userId=#{userId}
+    </update>
+    
+    <select id="qryByUserId" resultType="UserPwdPo">
+    	select * from user_pwd
+    	where userId=#{userId}
+    </select>
+    
+    <select id="qry" resultType="UserPwdPo">
+    	select * from user_pwd
+    	<where>
+    		<if test="userId != null and userId != ''">
+    			userId = #{userId}
+    		</if>
+    		<if test="userName != null and userName != ''">
+    			and userName = #{userName}
+    		</if>
+    		<if test="userPassword != null and userPassword != ''">
+    			and userPassword = #{userPassword}
+    		</if>
+    	</where> 
+    </select>
+    
+    <select id="pwdQry" parameterType="map" resultType="map">
+    	select pwd.userId,userName,certName,certNo,addr 
+    	from user_pwd pwd left join user_info info on pwd.userId = info.userId
+    	<where>
+    		<if test="userId != null and userId != ''">
+    			userId = #{userId}
+    		</if>
+    		<if test="userName != null and userName != ''">
+    			and userName = #{userName}
+    		</if>
+    		<if test="userPassword != null and userPassword != ''">
+    			and userPassword = #{userPassword}
+    		</if>
+    	</where> 
+    </select>
+    
+    <select id="qryList" parameterType="UserPwdPo" resultType="UserPwdPo">
+    	select * 
+    	from user_pwd
+    	<where>
+    		<if test="userId != null and userId !=''">
+    			userId = #{userId}
+    		</if>
+    		<if test="userName != null and userName !=''">
+    			and userName = #{userName}
+    		</if>
+    		<if test="userPassword != null and userPassword !=''">
+    			and userPassword = #{userPassword}
+    		</if>
+    	</where>
+    </select>
+</mapper>

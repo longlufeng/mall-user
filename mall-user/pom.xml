@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.lufeng.tech</groupId>
+		<artifactId>mall-cloud</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>mall-user</artifactId>
+	<name>mall-user</name>
+	<description>用户微服务</description>
+
+	<dependencies>
+		<!-- 引入 eureka-client -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- 提供加解密api的组件 -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>1.68</version>
+		</dependency>
+
+		<!-- 引入common的组件 -->
+		<dependency>
+			<groupId>cn.lufeng.tech</groupId>
+			<artifactId>mall-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

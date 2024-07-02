@@ -1,0 +1,63 @@
+server:
+  port: 8001
+  
+spring:
+  application:
+    name: user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user
+    username: root
+    password: root
+  # session配置
+  session:
+    timeout: 86400 # 设置session失效时间
+    store-type: redis # 修改spring-session存储配置，默认存储到服务器内存中，现在设置存到redis中（关键）
+  # redis配置
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    database: 0 # 设置存入redis的哪一个库（默认是0）
+    lettuce: 
+      pool: 
+                      # 最大阻塞等待时间，负数表示没有限制
+        max-wait: -1
+                     # 连接池中的最大空闲连接
+        max-idle: 5
+                      # 连接池中的最小空闲连接
+        min-idle: 0
+                      # 连接池中最大连接数，负数表示没有限制
+        max-active: 20
+        
+
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance: 
+           # 服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
+    lease-expiration-duration-in-seconds: 3
+    lease-renewal-interval-in-seconds: 1
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+      #目的是为了省略resultType里的代码量
+  type-aliases-package: com.llf.po
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  
+      
+logging:
+  level:
+    root: INFO
+    
+sm2:
+  privateKey: 7b1a6e9e72586c8674313049a5e366816d8c29ff2728e142e3b423f4c63167d7
+  publicKey: 0443cbfde3ad0308294ce1752cbc3345d7692ee813a83672a9e93fb80355b96ae4b941fe100336f3c03fb2471c4242659edb275cb928b6f8bfb16312c8a0d2db37
+  
+sess:
+  time-out: 300
+url:
+  no-need-chk-session: /user/login,/user/register
+  no-need-chk-login: /user/login,/user/register
