@@ -6,7 +6,7 @@ public enum ErrorCode {
 	USER_SESS_OUT("100003", "会话超时，请重新登录"),
 	USER_EXCH_DEV("100004", "当前用户已经在其它设备登录"),
 	USER_NO_LOGIN("100005", "用户未登录"),
-	SYS_BUSY("100006", "系统繁忙");
+	SYS_BUSY("100006", "系统繁忙11");
 	
 	private String code;
 	private String msg;
